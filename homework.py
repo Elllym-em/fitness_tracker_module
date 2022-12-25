@@ -132,7 +132,7 @@ def read_package(workout_type: str, data: List[float]) -> Training:
                                         'RUN': Running,
                                         'WLK': SportsWalking}
     if workout_type not in workout_fit:
-        raise AttributeError(
+        raise ValueError(
             'Такой тренировки не нашлось. '
             'Выбери SWM, RUN или WLK.')
     return workout_fit[workout_type](*data)
@@ -149,6 +149,7 @@ if __name__ == '__main__':
         ('SWM', [720, 1, 80, 25, 40]),
         ('RUN', [15000, 1, 75]),
         ('WLK', [9000, 1, 75, 180]),
+        ('YOG', [9000, 1, 75, 180])
     ]
 
     for workout_type, data in packages:
